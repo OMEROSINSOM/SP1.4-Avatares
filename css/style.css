@@ -1,0 +1,407 @@
+/* Variables CSS para facilitar el manejo de temas */
+:root {
+    --primary-color: #7de391;
+    --primary-hover: #138361;
+    --bg-color: #252626;
+    --text-color: #edf0f0;
+    --text-color-secondary: #414040;
+    --card-bg: #403f3f;
+    --border-color: #696969;
+}
+
+/* Reset Básico */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.5;
+}
+
+/* --- NAVEGACIÓN --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--card-bg);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.brand {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+.nav-link {
+    margin-left: 1rem;
+    text-decoration: none;
+    color: #bfc2c6;
+    font-weight: 500;
+}
+
+.nav-link.active { color: var(--primary-color); }
+
+/* --- CONTENEDORES Y ESTRUCTURA (Mobile First) --- */
+.view-create-profile {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.form-container, .card-container {
+    width: 100%;
+}
+
+/* --- FORMULARIO --- */
+
+.input-group, .input-group-row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.input-group-row {
+    flex-direction: row;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+}
+
+.avatar-add {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px dashed var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.avatar-add:hover {
+    transform: scale(1.1);
+    border-color: var(--primary-color);
+}
+
+label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    color: var(--text-color);
+}
+
+input[type="text"], textarea {
+    padding: 0.6rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-family: inherit;
+    width: 100%;
+}
+
+input[type="color"] {
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#input-name, #input-bio {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}
+
+#input-name::placeholder, #input-bio::placeholder {
+    color: #a0a0a0;
+}
+
+#input-color {
+    padding: 0;
+    height: 40px;
+    width: 100%;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: var(--card-bg);
+}
+
+.input-group-row input { flex: 1; }
+
+hr {
+    border: 0;
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 1.5rem 0;
+}
+
+/* --- BOTONES --- */
+button {
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--text-color-secondary);
+    width: 100%;
+}
+
+.btn-primary:hover { background-color: var(--primary-hover); color: var(--text-color); }
+
+.close-modal {
+    background-color: transparent;
+    color: white;
+}
+
+
+/* --- DISEÑO DE LA TARJETA --- */
+.card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.card-header {
+    height: 120px;
+    background-color: #3b82f6; /* Default */
+    transition: background-color 0.3s ease;
+}
+
+/* --- SELECTOR DE AVATARES LOCALES --- */
+.avatar-grid {
+    display: grid;
+    /* auto-fill ajusta cuántas columnas caben automáticamente basándose en un ancho mínimo de 50px */
+    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+    gap: 10px;
+    margin-top: 0.5rem;
+}
+
+.avatar-option {
+    width: 100%;
+    aspect-ratio: 1; /* Mantiene la imagen perfectamente cuadrada */
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.avatar-option:hover {
+    transform: scale(1.1); /* Pequeño efecto de zoom al pasar el mouse */
+}
+
+/* Clase dinámica que JavaScript agregará al avatar seleccionado */
+.avatar-option.selected {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 10px rgba(37, 99, 235, 0.3);
+}
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 4px solid white;
+    margin-top: -50px;
+    background-color: white;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+#name-preview {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+
+#bio-preview {
+    font-size: 0.95rem;
+    color: var(--text-color);
+}
+
+/* --- MODAL --- */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.modal-body {
+    margin-bottom: 1.5rem;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    padding-top: 1rem;
+    border-top: 2px solid var(--border-color);
+}
+
+/* -- INPUT DE IMAGEN PERSONALIZADA -- */
+
+.upload-area {
+    border: 2px dashed var(--border-color);
+    padding: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.upload-area:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: var(--primary-color);
+}
+
+#github-search {
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    width: 100%;
+    margin-bottom: 0.5rem;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.api-select {
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}
+
+option {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}
+
+.btn-secondary {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+.status-msg {
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+#custom-avatar-preview {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-top: 1rem;
+    border: 2px solid var(--border-color);
+}
+
+/* --- GALERÍA DE AVATARES --- */
+.gallery-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-grid {
+    display: grid;
+    /* Responsive automático: crea tantas columnas de mínimo 300px como quepan */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 0 2rem 2rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Reutilizamos el estilo de la tarjeta que ya tenías, asegurando que ocupe el 100% de su celda */
+.gallery-grid .card {
+    width: 100%;
+}
+
+/* --- SISTEMA DE ENRUTAMIENTO SPA --- */
+.view-module {
+    display: none; /* Oculta todas las vistas por defecto */
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+.view-module.active {
+    display: block; /* Solo muestra la vista activa */
+}
+
+
+/* - Utilidades - */
+.hidden { display: none; }
+.blurred-background { filter: blur(4px); pointer-events: none; } /* Efecto de desenfoque cuando el modal está activo */
+.dragover { border-color: var(--primary-color); background-color: rgba(37, 99, 235, 0.1); }
+
+/* --- MEDIA QUERIES (Pantallas Grandes) --- */
+@media (min-width: 768px) {
+    .view-create-profile {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    
+    .form-container {
+        flex: 1;
+        position: sticky; /* Fija el formulario si hay mucho scroll */
+        top: 2rem;
+    }
+    
+    .card-container {
+        flex: 1;
+    }
+}
